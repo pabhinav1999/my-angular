@@ -9,7 +9,7 @@
     margin-top: 200px;
 }
 
-.login-title {
+.create-account-title {
     text-align: center;
 }
 
@@ -29,7 +29,7 @@
     margin-top: 5px;
 }
 
-.btn-container .login-button {
+.btn-container .create-account-button {
     background-color:#30bd5a;
     color: white;
 }
