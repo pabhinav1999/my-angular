@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="form-container">
+        <h2 class="create-account-title">Create an account</h2>
+        <form class="form-fields-container" [formGroup]="createAccountForm" >
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your email</mat-label>
+                <input formControlName="email" matInput type="email" placeholder="abc@xyz.com" autocomplete='off' >
+                <mat-error *ngIf="createAccountForm.get('email').touched && createAccountForm.get('email').errors?.required"> Please enter valid email address</mat-error>
+            </mat-form-field >
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your name</mat-label>
+                <input formControlName="name" matInput type="text" autocomplete='off' >
+            </mat-form-field >
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your password</mat-label>
+                <input formControlName="password" matInput type="password" autocomplete="off">
+                <mat-error *ngIf="!createAccountForm.controls.password.valid && createAccountForm.get('password').hasError('customError')"> Please enter strong password</mat-error>
+            </mat-form-field>
+        </form>
+        <div class="btn-container">
+            <button (click)="formControlStatus()"> Click</button>
+            <button mat-raised-button class="create-account-button" [disabled]="!(createAccountForm.valid)" (click)="createAccountSuccess()">Create an Account</button>
+        </div>
+    </div>
+</div>

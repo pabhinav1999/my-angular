@@ -1,18 +1,20 @@
 <div class="container">
     <div class="form-container">
         <h2 class="login-title">Login</h2>
-        <form class="form-fields-container" >
+        <form class="form-fields-container" [formGroup]="loginForm" >
             <mat-form-field appearance="outline">
                 <mat-label>Enter your email</mat-label>
-                <input formControlName="email" matInput type="email" placeholder="abc@xyz.com" autocomplete='off'>
+                <input formControlName="email" matInput type="email" placeholder="abc@xyz.com" autocomplete='off' >
+                <mat-error *ngIf="loginForm.get('email').touched && loginForm.get('email').errors?.required"> Please enter valid email address</mat-error>
             </mat-form-field  >
             <mat-form-field appearance="outline">
                 <mat-label>Enter your password</mat-label>
                 <input formControlName="password" matInput type="password" autocomplete="off">
+                <mat-error *ngIf="!loginForm.controls.password.valid && loginForm.get('password').hasError('customError')"> Please enter strong password</mat-error>
             </mat-form-field>
         </form>
         <div class="btn-container">
-            <button mat-raised-button class="login-button">Login</button>
+            <button mat-raised-button class="login-button" [disabled]="!(loginForm.valid)" (click)="loginSuccess()">Login</button>
             <p>OR</p>
             <button routerLink="/create-account" mat-raised-button>Create an account</button>
         </div>
